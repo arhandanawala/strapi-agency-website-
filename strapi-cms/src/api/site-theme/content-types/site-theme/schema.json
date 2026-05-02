@@ -1,0 +1,37 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_themes",
+  "info": {
+    "singularName": "site-theme",
+    "pluralName": "site-themes",
+    "displayName": "Site Theme",
+    "description": "Theme colors"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "pageBackgroundColor": { "type": "string" },
+    "surfaceColor": { "type": "string" },
+    "mutedSectionBackgroundColor": { "type": "string" },
+    "borderColor": { "type": "string" },
+    "primaryColor": { "type": "string" },
+    "primaryDarkColor": { "type": "string" },
+    "secondaryColor": { "type": "string" },
+    "textPrimaryColor": { "type": "string" },
+    "textSecondaryColor": { "type": "string" },
+    "labelBackgroundColor": { "type": "string" },
+    "labelTextColor": { "type": "string" },
+    "navScrolledBackgroundColor": { "type": "string" },
+    "footerBackgroundColor": { "type": "string" },
+    "footerTextColor": { "type": "string" },
+    "heroShapeOneStartColor": { "type": "string" },
+    "heroShapeOneEndColor": { "type": "string" },
+    "heroShapeTwoStartColor": { "type": "string" },
+    "heroShapeTwoEndColor": { "type": "string" },
+    "heroShapeThreeStartColor": { "type": "string" },
+    "heroShapeThreeEndColor": { "type": "string" },
+    "heroOverlayColor": { "type": "string" },
+    "starColor": { "type": "string" }
+  }
+}

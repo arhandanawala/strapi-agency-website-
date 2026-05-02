@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_service_showcases",
+  "info": {
+    "displayName": "Service Showcase",
+    "description": "Service collection highlight"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "showFeaturedOnly": {
+      "type": "boolean",
+      "default": false
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button"
+    }
+  }
+}

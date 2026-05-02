@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: business-website-strapi
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install --legacy-peer-deps && npm run build
+    startCommand: npm run start
+    healthCheckPath: /_health
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: DATABASE_CLIENT
+        value: postgres
+      - key: DATABASE_URL
+        fromDatabase:
+          name: business-website-db
+          property: connectionString
+      - key: DATABASE_SSL
+        value: true
+      - key: APP_KEYS
+        generateValue: true
+      - key: ADMIN_JWT_SECRET
+        generateValue: true
+      - key: API_TOKEN_SALT
+        generateValue: true
+      - key: TRANSFER_TOKEN_SALT
+        generateValue: true
+      - key: JWT_SECRET
+        generateValue: true
+
+databases:
+  - name: business-website-db
+    plan: free
+    region: oregon
+    databaseType: postgres
+    ipAllowList: []

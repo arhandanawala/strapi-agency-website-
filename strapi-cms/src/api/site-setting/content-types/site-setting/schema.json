@@ -1,0 +1,63 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Site Setting",
+    "description": "Global website settings, navigation, and SEO defaults"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "siteName": {
+      "type": "string",
+      "required": true
+    },
+    "siteTagline": {
+      "type": "text"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "announcementText": {
+      "type": "string"
+    },
+    "primaryNavigation": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link"
+    },
+    "headerCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button"
+    },
+    "footerTagline": {
+      "type": "text"
+    },
+    "footerColumns": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.footer-column"
+    },
+    "socialLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link"
+    },
+    "contactItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.contact-item"
+    },
+    "defaultSeo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

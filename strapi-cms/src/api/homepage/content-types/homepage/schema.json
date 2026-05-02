@@ -1,0 +1,137 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepages",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "Homepage",
+    "description": "Homepage section content"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "heroBadgeLabel": {
+      "type": "string"
+    },
+    "heroBadgeText": {
+      "type": "string"
+    },
+    "heroTitle": {
+      "type": "string"
+    },
+    "heroHighlightedText": {
+      "type": "string"
+    },
+    "heroSubtitle": {
+      "type": "text"
+    },
+    "heroPrimaryButtonText": {
+      "type": "string"
+    },
+    "heroSecondaryButtonText": {
+      "type": "string"
+    },
+    "heroStats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.stat"
+    },
+    "servicesTitle": {
+      "type": "string"
+    },
+    "servicesSubtitle": {
+      "type": "text"
+    },
+    "servicesLinkText": {
+      "type": "string"
+    },
+    "aboutLabel": {
+      "type": "string"
+    },
+    "aboutTitle": {
+      "type": "string"
+    },
+    "aboutHighlightedText": {
+      "type": "string"
+    },
+    "aboutDescriptionOne": {
+      "type": "text"
+    },
+    "aboutDescriptionTwo": {
+      "type": "text"
+    },
+    "aboutImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "aboutImageAlt": {
+      "type": "string"
+    },
+    "aboutExperienceNumber": {
+      "type": "string"
+    },
+    "aboutExperienceText": {
+      "type": "string"
+    },
+    "aboutFeatures": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.feature"
+    },
+    "aboutCtaText": {
+      "type": "string"
+    },
+    "testimonialsTitle": {
+      "type": "string"
+    },
+    "testimonialsSubtitle": {
+      "type": "text"
+    },
+    "contactLabel": {
+      "type": "string"
+    },
+    "contactTitle": {
+      "type": "string"
+    },
+    "contactHighlightedText": {
+      "type": "string"
+    },
+    "contactDescription": {
+      "type": "text"
+    },
+    "contactInfoItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.contact-item"
+    },
+    "contactFormNameLabel": {
+      "type": "string"
+    },
+    "contactFormNamePlaceholder": {
+      "type": "string"
+    },
+    "contactFormEmailLabel": {
+      "type": "string"
+    },
+    "contactFormEmailPlaceholder": {
+      "type": "string"
+    },
+    "contactFormMessageLabel": {
+      "type": "string"
+    },
+    "contactFormMessagePlaceholder": {
+      "type": "string"
+    },
+    "contactSubmitButtonText": {
+      "type": "string"
+    },
+    "contactSuccessText": {
+      "type": "string"
+    },
+    "contactFallbackNotice": {
+      "type": "string"
+    }
+  }
+}

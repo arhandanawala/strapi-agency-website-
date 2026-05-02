@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_shared_buttons",
+  "info": {
+    "displayName": "Button",
+    "description": "Reusable CTA button"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["primary", "secondary", "ghost"],
+      "default": "primary"
+    },
+    "external": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

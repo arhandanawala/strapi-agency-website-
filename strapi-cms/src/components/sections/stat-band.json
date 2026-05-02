@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_stat_bands",
+  "info": {
+    "displayName": "Stat Band",
+    "description": "A row of metrics"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.stat"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_logo_clouds",
+  "info": {
+    "displayName": "Logo Cloud",
+    "description": "Brand logos or trust badges"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "logos": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.logo-item"
+    }
+  }
+}

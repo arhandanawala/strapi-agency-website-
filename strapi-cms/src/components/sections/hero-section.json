@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_sections_hero_sections",
+  "info": {
+    "displayName": "Hero Section",
+    "description": "High-impact page hero"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "highlightedText": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "primaryButton": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button"
+    },
+    "secondaryButton": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button"
+    },
+    "metrics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.stat"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["split", "immersive"],
+      "default": "split"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page",
+    "description": "CMS-driven website pages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "navigationLabel": {
+      "type": "string"
+    },
+    "excerpt": {
+      "type": "text"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.hero-section",
+        "sections.service-showcase",
+        "sections.rich-content",
+        "sections.stat-band",
+        "sections.process-steps",
+        "sections.logo-cloud",
+        "sections.testimonial-showcase",
+        "sections.cta-banner",
+        "sections.contact-panel"
+      ]
+    }
+  }
+}

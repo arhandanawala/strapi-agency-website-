@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_contact_panels",
+  "info": {
+    "displayName": "Contact Panel",
+    "description": "Contact form and information section"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "formTitle": {
+      "type": "string"
+    },
+    "successText": {
+      "type": "string"
+    },
+    "fallbackNotice": {
+      "type": "string"
+    }
+  }
+}

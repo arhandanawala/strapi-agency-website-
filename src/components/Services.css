@@ -1,0 +1,125 @@
+.services {
+  background: var(--bg-light);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.services-grid.loading {
+  opacity: 0.7;
+}
+
+.service-card {
+  background: var(--surface-color);
+  border-radius: 16px;
+  padding: 2.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.service-card:hover {
+  border-color: transparent;
+}
+
+.service-card.skeleton {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.skeleton-icon {
+  width: 60px;
+  height: 60px;
+  background: #e5e7eb;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.skeleton-title {
+  height: 24px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  width: 70%;
+}
+
+.skeleton-text {
+  height: 60px;
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.cms-notice {
+  font-size: 0.875rem;
+  color: #f59e0b;
+  background: #fffbeb;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  border: 1px solid #fcd34d;
+}
+
+.service-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.service-icon {
+  color: white;
+}
+
+.service-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.service-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.service-link:hover {
+  color: var(--primary-dark);
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+}

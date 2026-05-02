@@ -1,0 +1,49 @@
+{
+  "collectionName": "components_sections_rich_contents",
+  "info": {
+    "displayName": "Rich Content",
+    "description": "Editorial text plus image"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "highlightedText": {
+      "type": "string"
+    },
+    "bodyOne": {
+      "type": "text"
+    },
+    "bodyTwo": {
+      "type": "text"
+    },
+    "bullets": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.feature"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "imageAlt": {
+      "type": "string"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button"
+    },
+    "layout": {
+      "type": "enumeration",
+      "enum": ["image-left", "image-right", "text-only"],
+      "default": "image-right"
+    }
+  }
+}

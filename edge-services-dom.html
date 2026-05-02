@@ -1,0 +1,720 @@
+﻿<!DOCTYPE html>
+<html lang="en"><head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Northstar Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style type="text/css" data-vite-dev-id="C:/Users/irsha/business-website/src/index.css">:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/irsha/business-website/src/App.css">:root {
+  --page-background: #fbfbfd;
+  --surface-color: #ffffff;
+  --primary-color: #0f766e;
+  --primary-dark: #115e59;
+  --secondary-color: #ea580c;
+  --text-primary: #172033;
+  --text-secondary: #536179;
+  --bg-light: #eef3f8;
+  --border-color: #d7e0eb;
+  --label-bg: rgba(15, 118, 110, 0.1);
+  --label-text: #0f766e;
+  --nav-scrolled-bg: rgba(251, 251, 253, 0.92);
+  --footer-bg: #172033;
+  --footer-text: #f8fafc;
+  --hero-overlay: rgba(251, 251, 253, 0.82);
+  --shadow-soft: 0 18px 48px rgba(23, 32, 51, 0.08);
+  --shadow-card: 0 14px 32px rgba(23, 32, 51, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-primary);
+  background: radial-gradient(circle at top left, rgba(20, 184, 166, 0.12), transparent 30%),
+    radial-gradient(circle at top right, rgba(251, 146, 60, 0.14), transparent 28%),
+    var(--page-background);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: transparent;
+}
+
+.announcement-bar {
+  padding: 0.75rem 1.5rem;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--label-text);
+  background: var(--label-bg);
+  border-bottom: 1px solid rgba(15, 118, 110, 0.12);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+}
+
+.site-header.is-scrolled {
+  background: var(--nav-scrolled-bg);
+  border-color: rgba(23, 32, 51, 0.08);
+}
+
+.site-header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+  min-width: 0;
+}
+
+.brand__mark {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  color: white;
+  border-radius: 0.7rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  font-weight: 700;
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.brand__text strong {
+  font-size: 1rem;
+}
+
+.brand__text small {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.site-nav a {
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  color: var(--text-secondary);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.site-nav a.active,
+.site-nav a:hover {
+  color: var(--text-primary);
+  background: rgba(23, 32, 51, 0.05);
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.85rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button--primary {
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-color), #0d9488);
+  box-shadow: 0 12px 24px rgba(15, 118, 110, 0.2);
+}
+
+.button--secondary {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(23, 32, 51, 0.1);
+}
+
+.button--ghost {
+  color: var(--primary-dark);
+  background: transparent;
+  border-color: rgba(15, 118, 110, 0.18);
+}
+
+.menu-toggle {
+  display: none;
+  width: 2.85rem;
+  height: 2.85rem;
+  border: 1px solid rgba(23, 32, 51, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  padding: 0.7rem;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--text-primary);
+  margin: 4px 0;
+}
+
+.page-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 5rem;
+}
+
+.page-shell--loading {
+  display: grid;
+  place-items: center;
+  min-height: 70vh;
+}
+
+.loading-panel,
+.not-found-panel {
+  max-width: 580px;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: var(--shadow-soft);
+}
+
+.loading-panel h1,
+.not-found-panel h1 {
+  margin: 0 0 0.75rem;
+  font-size: 2rem;
+}
+
+.loading-panel p,
+.not-found-panel p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.hero-section,
+.content-section,
+.site-footer {
+  margin-top: 1.5rem;
+}
+
+.hero-section,
+.content-section {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-section {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  padding: 3rem;
+  min-height: 560px;
+}
+
+.hero-section--immersive {
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.9), rgba(23, 32, 51, 0.72)),
+    rgba(255, 255, 255, 0.92);
+  color: #f8fafc;
+}
+
+.hero-section--immersive .section-eyebrow,
+.hero-section--immersive p,
+.hero-section--immersive .metric-card span {
+  color: rgba(248, 250, 252, 0.82);
+}
+
+.hero-section__content,
+.cta-banner__content,
+.section-copy,
+.section-heading {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-section__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-section h1,
+.section-heading h2,
+.section-copy h2 {
+  margin: 0;
+  font-size: clamp(2.1rem, 4vw, 4.6rem);
+  line-height: 0.98;
+}
+
+.hero-section h1 em,
+.section-heading h2 em,
+.section-copy h2 em {
+  display: block;
+  font-style: normal;
+  color: var(--secondary-color);
+}
+
+.hero-section p,
+.section-heading p,
+.section-copy p,
+.cta-banner__content p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.hero-section__content p {
+  max-width: 44rem;
+  margin: 1.25rem 0 0;
+}
+
+.hero-section__media,
+.section-media,
+.cta-banner__image {
+  position: relative;
+  min-height: 280px;
+}
+
+.hero-section__media img,
+.section-media img,
+.cta-banner__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.4rem;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.metric-grid--band {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.metric-card {
+  padding: 1.2rem;
+  border-radius: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hero-section--split .metric-card,
+.stat-band .metric-card {
+  background: var(--bg-light);
+  border-color: rgba(23, 32, 51, 0.06);
+}
+
+.metric-card strong {
+  display: block;
+  font-size: 1.7rem;
+}
+
+.metric-card span {
+  color: var(--text-secondary);
+}
+
+.content-section {
+  padding: 2.3rem;
+}
+
+.section-heading {
+  max-width: 760px;
+  margin-bottom: 1.8rem;
+}
+
+.section-heading--compact {
+  margin-bottom: 1.2rem;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.8rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  color: var(--label-text);
+  background: var(--label-bg);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.service-grid,
+.testimonial-grid,
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.service-card,
+.testimonial-card,
+.process-card,
+.feature-item,
+.contact-form-panel,
+.contact-panel__detail {
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 1.3rem;
+  background: var(--surface-color);
+  box-shadow: var(--shadow-card);
+}
+
+.service-card,
+.testimonial-card,
+.process-card {
+  padding: 1.25rem;
+}
+
+.service-card__icon {
+  display: inline-flex;
+  margin-bottom: 1rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 999px;
+  background: var(--label-bg);
+  color: var(--label-text);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.service-card h3,
+.process-card h3,
+.testimonial-card strong,
+.contact-form-panel h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+}
+
+.service-card p,
+.process-card p,
+.testimonial-card p,
+.contact-panel__detail span,
+.feature-item span {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+
+.section-grid--image-left .section-copy {
+  order: 2;
+}
+
+.section-grid--image-left .section-media {
+  order: 1;
+}
+
+.feature-list,
+.contact-panel__details {
+  display: grid;
+  gap: 0.9rem;
+  margin: 1.5rem 0;
+}
+
+.feature-item,
+.contact-panel__detail {
+  padding: 1rem 1.1rem;
+}
+
+.feature-item strong,
+.contact-panel__detail strong {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.process-card__index {
+  display: inline-grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  font-weight: 700;
+}
+
+.logo-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.logo-cloud__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(23, 32, 51, 0.1);
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.testimonial-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card__meta img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-card__meta span {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.cta-banner {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.cta-banner__image img {
+  min-height: 100%;
+}
+
+.cta-banner__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.contact-form-panel {
+  display: grid;
+  gap: 1rem;
+  padding: 1.35rem;
+}
+
+.contact-form-panel__header p,
+.contact-form-panel__feedback {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.contact-form-panel label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.contact-form-panel input,
+.contact-form-panel textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(23, 32, 51, 0.12);
+  border-radius: 1rem;
+  font: inherit;
+  color: var(--text-primary);
+  background: #fff;
+}
+
+.site-footer {
+  margin-top: 3rem;
+  padding: 3rem 1.5rem;
+  color: var(--footer-text);
+  background: linear-gradient(180deg, rgba(23, 32, 51, 0.96), rgba(13, 20, 34, 1));
+}
+
+.site-footer__grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.site-footer__intro p,
+.site-footer__links a,
+.site-footer__links span {
+  color: rgba(248, 250, 252, 0.72);
+}
+
+.site-footer__links {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.site-footer__socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 980px) {
+  .site-header__inner,
+  .hero-section,
+  .section-grid,
+  .cta-banner,
+  .site-footer__grid,
+  .service-grid,
+  .testimonial-grid,
+  .process-grid,
+  .metric-grid,
+  .metric-grid--band {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header__inner {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 1rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    border: 1px solid rgba(23, 32, 51, 0.08);
+    border-radius: 1.2rem;
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: inline-block;
+  }
+
+  .site-header__actions .button {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell,
+  .site-footer,
+  .announcement-bar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .site-header__inner,
+  .hero-section,
+  .content-section {
+    padding: 1rem;
+  }
+
+  .hero-section h1,
+  .section-heading h2,
+  .section-copy h2 {
+    font-size: 2rem;
+  }
+}
+</style><meta name="description" content="Explore Northstar Studio services across positioning, website systems, growth UX, and content operations."><meta property="og:title" content="Services | Northstar Studio"><meta property="og:description" content="Explore Northstar Studio services across positioning, website systems, growth UX, and content operations."><meta name="robots" content="index, follow"><meta name="keywords" content="business consulting, brand strategy, digital growth, client services"><meta property="og:image" content="http://localhost:1337/uploads/services_workshop_73827a78fd.jpg"><link rel="canonical" href="http://localhost:5173/services"></head>
+  <body>
+    <div id="root"><div class="app-shell" style="--page-background: #fbfbfd; --surface-color: #ffffff; --bg-light: #eef3f8; --border-color: #d7e0eb; --primary-color: #0f766e; --primary-dark: #115e59; --secondary-color: #ea580c; --text-primary: #172033; --text-secondary: #536179; --label-bg: rgba(15, 118, 110, 0.1); --label-text: #0f766e; --nav-scrolled-bg: rgba(251, 251, 253, 0.92); --footer-bg: #172033; --footer-text: #f8fafc; --hero-shape-1-start: #0f766e; --hero-shape-1-end: #14b8a6; --hero-shape-2-start: #ea580c; --hero-shape-2-end: #fb923c; --hero-shape-3-start: #1d4ed8; --hero-shape-3-end: #60a5fa; --hero-overlay: rgba(251,251,253,0.82); --star-color: #f59e0b;"><div class="announcement-bar"><span>Now shipping multi-page Strapi websites built for content teams.</span></div><header class="site-header "><div class="site-header__inner"><a class="brand" href="/"><span class="brand__mark">N</span><span class="brand__text"><strong>Northstar Studio</strong><small>Strategy, UX, and client-editable websites for ambitious service businesses.</small></span></a><nav class="site-nav "><a class="" href="/">Home</a><a aria-current="page" class="active" href="/services">Services</a><a class="" href="/about">About</a><a class="" href="/growth-systems">Growth Systems</a><a class="" href="/contact">Contact</a></nav><div class="site-header__actions"><a class="button button--primary" href="/contact">Book a Strategy Call</a><button type="button" class="menu-toggle " aria-label="Toggle navigation"><span></span><span></span><span></span></button></div></div></header><main class="page-shell"><section class="hero-section hero-section--split" style="opacity: 0; transform: translateY(32px);"><div class="hero-section__content"><span class="section-eyebrow">Services</span><h1>Specialized work across message,<em>structure, and launch</em></h1><p>Our services are designed to make the site sharper in the room, easier to manage internally, and faster to evolve after launch.</p><div class="button-row"><a class="button button--primary" href="/contact">Contact us</a><a class="button button--secondary" href="/growth-systems">See process</a></div><div class="metric-grid"><div class="metric-card"><strong>6</strong><span>Core service tracks</span></div><div class="metric-card"><strong>1</strong><span>Integrated system</span></div><div class="metric-card"><strong>0</strong><span>Unnecessary fluff</span></div></div></div><div class="hero-section__media"><img alt="services-workshop.jpg" src="http://localhost:1337/uploads/services_workshop_73827a78fd.jpg"></div></section><section class="content-section" style="opacity: 0; transform: translateY(32px);"><div class="section-heading"><span class="section-eyebrow">Offer menu</span><h2>The site should reflect how the business actually sells</h2><p>Every service supports a common goal: clearer decisions for buyers and less operational drag for your team.</p></div><div class="service-grid"><article class="service-card"><div class="service-card__icon">Strategic positioning</div><h3>Strategic Positioning</h3><p>We turn scattered offers into a clear service narrative that makes the homepage, sales deck, and proposal flow line up.</p></article><article class="service-card"><div class="service-card__icon">Website systems</div><h3>Website Systems</h3><p>We design and build multi-page websites with editable Strapi structures so internal teams can publish with confidence.</p></article><article class="service-card"><div class="service-card__icon">Growth UX</div><h3>Growth UX</h3><p>We improve page hierarchy, calls to action, and decision flow so more of the right visitors become qualified conversations.</p></article><article class="service-card"><div class="service-card__icon">Brand messaging</div><h3>Brand Messaging</h3><p>We sharpen headlines, proof points, and brand voice to make the business feel more precise and more credible.</p></article><article class="service-card"><div class="service-card__icon">Campaign pages</div><h3>Campaign Pages</h3><p>We create launch, offer, and vertical-specific pages that reuse your design system without looking generic.</p></article><article class="service-card"><div class="service-card__icon">Design operations</div><h3>Design Operations</h3><p>We structure reusable content blocks, governance, and publishing workflows so the site stays usable after launch.</p></article></div><a class="button button--secondary button button--secondary--primary" href="/contact">Book a strategy call</a></section><section class="content-section" style="opacity: 0; transform: translateY(32px);"><div class="section-heading"><span class="section-eyebrow">Engagement shape</span><h2>How service work is usually structured</h2><p>We scope in layers so you can align the level of work to the current bottleneck instead of buying an oversized package.</p></div><div class="process-grid"><article class="process-card"><span class="process-card__index">1</span><h3>Messaging alignment</h3><p>Clarify audience, proof, differentiation, and page priorities.</p></article><article class="process-card"><span class="process-card__index">2</span><h3>Design direction</h3><p>Translate the message into a professional, conversion-aware interface system.</p></article><article class="process-card"><span class="process-card__index">3</span><h3>CMS architecture</h3><p>Build reusable page blocks and editing rules around real publishing needs.</p></article><article class="process-card"><span class="process-card__index">4</span><h3>Launch and iteration</h3><p>Ship quickly, then expand the system with new pages and campaigns.</p></article></div></section><section class="content-section cta-banner" style="opacity: 0; transform: translateY(32px);"><div class="cta-banner__image"><img alt="cta-laptop-notes.jpg" src="http://localhost:1337/uploads/cta_laptop_notes_83efd986a8.jpg"></div><div class="cta-banner__content"><span class="section-eyebrow">Need a sharper scope?</span><h2>We can map phase one around the pages that matter most</h2><p>A smaller release with the right structure beats a giant sitemap that never gets maintained.</p><div class="button-row"><a class="button button--primary" href="/contact">Talk through scope</a><a class="button button--ghost" href="/growth-systems">Learn about process</a></div></div></section></main><footer class="site-footer"><div class="site-footer__grid"><div class="site-footer__intro"><h2>Northstar Studio</h2><p>Northstar Studio designs the messaging system, page structure, and frontend experience so your team can keep publishing after launch.</p><div class="site-footer__socials"><a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a></div></div><div class="site-footer__column"><h3>Navigate</h3><div class="site-footer__links"><a href="/">Home</a><a href="/services">Services</a><a href="/about">About</a><a href="/contact">Contact</a></div></div><div class="site-footer__column"><h3>Capabilities</h3><div class="site-footer__links"><a href="/growth-systems">Content systems</a><a href="/services">Web design</a><a href="/services">Growth strategy</a></div></div><div class="site-footer__column"><h3>Connect</h3><div class="site-footer__links"><a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:hello@northstarstudio.co" target="_blank" rel="noreferrer">Email</a></div></div><div class="site-footer__column"><h3>Contact</h3><div class="site-footer__links"><span><strong>Email:</strong> hello@northstarstudio.co</span><span><strong>Phone:</strong> +1 (312) 555-0148</span><span><strong>Office:</strong> 220 W Kinzie St, Chicago, IL</span></div></div></div></footer></div></div>
+    <script type="module" src="/src/main.tsx?t=1777125373774"></script>
+  
+
+</body></html>
