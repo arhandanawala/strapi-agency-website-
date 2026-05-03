@@ -31,7 +31,6 @@ services:
   - type: web
     name: strapi-agency-website-frontend
     env: static
-    region: oregon
     plan: free
     rootDir: .
     buildCommand: npm install && npm run build
