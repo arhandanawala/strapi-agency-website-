@@ -164,69 +164,209 @@ Edit CSS variables in `App.css`:
 - **Framer Motion** uses `motion.*` components with whileHover, whileTap
 - **ScrollTrigger** handles scroll-based reveals
 
-## Deployment (Render + Supabase)
+## Deployment (Render + Supabase) — Full Step-by-Step
 
 Everything is deployed on **Render** — Strapi backend as a web service, frontend as a static site — with **Supabase PostgreSQL** as the database.
 
+---
+
 ### Prerequisites
 
-- GitHub repo pushed: `https://github.com/arhandanawala/strapi-agency-website-`
-- Supabase account (free tier)
+| Item | Where to get it |
+|------|----------------|
+| GitHub account | [github.com](https://github.com) |
+| Render account | [render.com](https://render.com) (sign up with GitHub) |
+| Supabase account | [supabase.com](https://supabase.com) |
+
+Your code is already pushed to: `https://github.com/arhandanawala/strapi-agency-website-`
+
+---
 
 ### Step 1: Create Supabase Database
 
-1. Go to [supabase.com](https://supabase.com) → **New project**
-2. Fill in:
+1. Go to [supabase.com](https://supabase.com) and **log in**
+2. Click **"New project"**
+3. Fill in the form:
    - **Name:** `strapi-agency-db`
-   - **Database Password:** Generate and **save it somewhere**
-   - **Region:** `US East (N. Virginia)` (closest to Render Oregon)
-3. Wait for the database to provision (~2 min)
-4. Go to **Project Settings > Database > Connection string (URI)**:
-   - Copy the URI: `postgresql://postgres:YOUR_PASSWORD@db.xxxxxxxxxxxx.supabase.co:6543/postgres`
-   - Replace `[YOUR-PASSWORD]` with your actual password
-   - Note: port is `6543` (Supabase's connection pooler), not `5432`
+   - **Database Password:** Click **"Generate"** and **copy it somewhere safe** (you'll need it)
+   - **Region:** Choose **US East (N. Virginia)** — closest to Render's Oregon servers = faster
+4. Click **"Create new project"** and wait ~2 minutes for provisioning
 
-### Step 2: Deploy Strapi Backend on Render
+5. Once created, go to **Project Settings** (gear icon) → **Database** in left sidebar
 
-1. Go to [render.com](https://render.com) → **New + > Blueprint**
-2. Connect your GitHub repo
-3. Render will auto-detect `render.yaml` at the root
-4. Before deploying, click **Edit** and set these **Environment Variables** (marked `sync: false`):
-   - `DATABASE_URL` → your Supabase connection string
-   - `APP_KEYS` → generate 4 random strings separated by commas (e.g. `abc123,def456,ghi789,jkl012`)
-   - `ADMIN_JWT_SECRET` → random string
-   - `API_TOKEN_SALT` → random string
-   - `TRANSFER_TOKEN_SALT` → random string
-   - `JWT_SECRET` → random string
-   - `VITE_STRAPI_URL` → leave blank for now, update after deploy
-5. Click **Apply** → Render deploys both:
-   - `strapi-agency-website-api` (Strapi web service)
+6. Scroll down to **"Connection string"** section:
+   - Make sure **Mode: URI** is selected
+   - Copy the string that looks like:
+     ```
+     postgresql://postgres:YOUR_PASSWORD@db.xxxxxxxxxxxx.supabase.co:6543/postgres
+     ```
+   - **IMPORTANT:** Replace `[YOUR-PASSWORD]` with the password you saved in step 3
+   - Note the port is `6543` (Supabase's connection pooler), not `5432`
+   - Keep this tab open — you'll paste this into Render next
+
+---
+
+### Step 2: Deploy on Render
+
+#### 2a. Connect your GitHub repo
+
+1. Go to [dashboard.render.com](https://dashboard.render.com)
+2. Click the **"New +"** button → **"Blueprint"**
+3. If prompted, **connect your GitHub account** and give Render permission
+4. Find and select your repo: **`arhandanawala/strapi-agency-website-`**
+
+#### 2b. Configure environment variables
+
+Render will auto-detect `render.yaml` at the root. **Before clicking Apply**, you need to fill in the secrets:
+
+1. You'll see a screen titled **"Blueprint"** with two services listed:
+   - `strapi-agency-website-api` (Node web service)
    - `strapi-agency-website-frontend` (Static site)
+
+2. **Click on each service** to expand and set env vars
+
+3. For `strapi-agency-website-api`, set these environment variables:
+
+   | Variable | Value |
+   |----------|-------|
+   | `DATABASE_URL` | Paste your Supabase connection string from Step 1 |
+   | `APP_KEYS` | `key1,key2,key3,key4` (4 random strings separated by commas) |
+   | `ADMIN_JWT_SECRET` | Any random string (e.g. `aB3dEfGhIjK1LmNoPqRsTuVwXyZ`) |
+   | `API_TOKEN_SALT` | Any random string (e.g. `mN4oPqRsTuVwXyZaB2cDeFgHiJkL`) |
+   | `TRANSFER_TOKEN_SALT` | Any random string (e.g. `pQ7rStUvWxYzAbCdEfGhIjKlMnOp`) |
+   | `JWT_SECRET` | Any random string (e.g. `xY9zAbCdEfGhIjKlMnOpQrStUvWx`) |
+
+   **Quick tip for random strings:** Type random keyboard mash — they just need to be unique and secret.
+
+4. For `strapi-agency-website-api`, set `VITE_STRAPI_URL`:
+   - Leave this **BLANK** for now — you'll set it after the backend deploys
+
+5. For `strapi-agency-website-frontend`:
+   - `VITE_STRAPI_URL` → leave **BLANK** for now
+
+#### 2c. Deploy
+
+1. Click **"Apply"**
+2. Render will start deploying both services:
+   - First it creates a **PostgreSQL database** (from the database block in render.yaml — wait, actually in this setup we use Supabase, so no Render DB is created)
+   - Then it deploys the **Strapi API** (takes 3-5 minutes)
+   - Then it deploys the **frontend static site** (takes 1-2 minutes)
+3. Watch the logs — if you see errors, check:
+   - `DATABASE_URL` is correct
+   - `APP_KEYS` has 4 comma-separated values
+   - Node version is correct (the yaml sets it to 20.18.0)
+
+4. Once done, you'll see URLs like:
+   - API: `https://strapi-agency-website-api.onrender.com`
+   - Frontend: `https://strapi-agency-website-frontend.onrender.com`
+
+---
 
 ### Step 3: Configure Strapi Admin
 
-1. Once deployed, go to `https://strapi-agency-website-api.onrender.com/admin`
-2. Create your admin account
-3. Set up **Public permissions**:
-   - Settings → Users & Permissions Plugin → Roles → Public
-   - Enable: `find` and `findOne` for Service, Testimonial, Page, Site-setting, Site-theme, Homepage, Header, Footer, Global
-   - Enable: `create` for Contact-submission
-4. Optional: Generate an **API Token** at Settings → API Tokens
+1. Open your API URL: `https://strapi-agency-website-api.onrender.com/admin`
+2. Create the **first admin account** (email + password)
+3. Once logged in, set up **Public API permissions**:
 
-### Step 4: Update Frontend Env & Re-deploy
+   a. Go to **Settings** (bottom left gear icon)
+   b. Scroll to **"Users & Permissions Plugin"** → click **"Roles"**
+   c. Click **"Public"**
+   d. Under **Permissions**, enable these checkboxes:
 
-1. On Render dashboard, go to `strapi-agency-website-frontend`
-2. Add environment variable: `VITE_STRAPI_URL = https://strapi-agency-website-api.onrender.com`
-3. Go to **Manual Deploy > Deploy latest commit**
+   | Content Type | Permissions to enable |
+   |-------------|----------------------|
+   | Contact-submission | ☑ `create` |
+   | Footer | ☑ `find` |
+   | Global | ☑ `find` |
+   | Header | ☑ `find` |
+   | Homepage | ☑ `find` |
+   | Page | ☑ `find` + ☑ `findone` |
+   | Service | ☑ `find` + ☑ `findone` |
+   | Site-setting | ☑ `find` |
+   | Site-theme | ☑ `find` |
+   | Testimonial | ☑ `find` + ☑ `findone` |
 
-### Step 5: Update CORS (if needed)
+   e. Click **"Save"** at the top right
 
-The `render.yaml` deploys the frontend at a Render URL like `https://strapi-agency-website-frontend.onrender.com`.  
-The `middlewares.js` already allows `*.vercel.app` — after deployment, you may want to add your actual Render frontend URL and any custom domain.
+4. **Optional but recommended — create an API Token:**
+   a. Go to **Settings > API Tokens**
+   b. Click **"Create new API Token"**
+   c. Name it `frontend-token`, token type: **Custom**, duration: **Unlimited**
+   d. Select these permissions:
+      - `find` and `findone` for Service, Testimonial, Page, Site-setting, Site-theme
+      - `create` for Contact-submission
+   e. Click **"Save"** — **copy the token** (it won't be shown again)
 
-Your Strapi Admin will be at: `https://strapi-agency-website-api.onrender.com/admin`  
-Your frontend live at: `https://strapi-agency-website-frontend.onrender.com`
+---
 
-## License
+### Step 4: Update Frontend to Point to Your Live API
+
+The frontend needs to know where your Strapi API lives:
+
+1. Go back to [dashboard.render.com](https://dashboard.render.com)
+2. Click on **`strapi-agency-website-frontend`**
+3. Go to **Environment** tab
+4. Click **"Add Environment Variable"**
+5. Set:
+   - **Key:** `VITE_STRAPI_URL`
+   - **Value:** `https://strapi-agency-website-api.onrender.com` (your actual API URL)
+6. Click **"Save Changes"**
+7. Go to **Manual Deploy** → **"Deploy latest commit"** (takes ~1 minute)
+
+---
+
+### Step 5: Add Content in Strapi
+
+Now add real content to your site:
+
+1. Go to `https://strapi-agency-website-api.onrender.com/admin`
+2. Under **Content Manager**, fill in:
+   - **Homepage** — site name, hero title, about content
+   - **Site Theme** — colors for your brand
+   - **Site Setting** — logo, navigation links, social links
+   - **Header** — header configuration
+   - **Footer** — footer columns and links
+   - **Services** — add your services
+   - **Testimonials** — add client testimonials
+   - **Pages** — create additional pages (About, Contact, etc.)
+
+3. Refresh your frontend URL — the site will now show your content!
+
+---
+
+### Step 6: Custom Domain (Optional)
+
+#### Frontend custom domain:
+1. On Render, go to `strapi-agency-website-frontend` → **Settings** → **Custom Domain**
+2. Add your domain (e.g. `www.yourbusiness.com`)
+3. Update your DNS provider with the CNAME record Render gives you
+
+#### Strapi Admin custom domain:
+1. On Render, go to `strapi-agency-website-api` → **Settings** → **Custom Domain**
+2. Add your domain (e.g. `cms.yourbusiness.com`)
+3. Update DNS with CNAME record
+
+**Then update CORS** in `strapi-cms/config/middlewares.js` to include your custom domain and re-deploy.
+
+---
+
+### Important Notes
+
+- **Free tier limits:** Render free web services spin down after 15 min of inactivity. The first request after idle takes ~30 seconds to wake up
+- **Media uploads:** Strapi stores uploaded images on Render's local disk, which gets wiped on each deploy. For production, set up a cloud storage provider (AWS S3, Cloudinary) via Strapi's upload provider plugin
+- **Environment variables:** Never commit `.env` files to Git (already in `.gitignore`)
+- **Database backups:** Supabase free tier includes daily backups — you can restore from Supabase dashboard
+
+---
+
+### Your URLs After Deployment
+
+```
+Strapi Admin:  https://strapi-agency-website-api.onrender.com/admin
+API Endpoint:  https://strapi-agency-website-api.onrender.com
+Frontend:      https://strapi-agency-website-frontend.onrender.com
+```
+
+### License
 
 MIT
